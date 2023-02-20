@@ -1,0 +1,42 @@
+Linux Assignment 01:
+Linux command to get duplicate word count in a file. Write the output to new file.
+
+nandan@ubuntu20-VirtualBox:~/Desktop/Practice$ touch nandan.txt // used to create file
+nandan@ubuntu20-VirtualBox:~/Desktop/Practice$ vi nandan.txt // To view the input text file
+nandan@ubuntu20-VirtualBox:~/Desktop/Practice$ cat nandan.txt //to view file
+
+Input file:
+nandan.txt =>
+1 nandan
+2 nandan
+3 siva
+4 nandan
+5 siva
+6 nandan
+7 nandan
+8 nandan
+9 nandan
+10 nandan
+11 siva
+12 siva
+13 siva
+14 bigdata
+15 bigdata
+16 big data
+17 siva
+18 nandan
+
+nandan@ubuntu20-VirtualBox:~/Desktop/Practice$ touch demo.txt // output file demo 
+
+nandan@ubuntu20-VirtualBox:~/Desktop/Practice$ sort nandan.txt | uniq -c | grep -v '^ * 1' > demo.txt // Linux command to get duplicate word count in a file.
+
+output file:
+demo.txt =>
+3 bigdata
+9 nandan
+6 siva
+
+//For uniq Command: -c -> count : It tells how many times a line was repeated by displaying a number as a prefix with the line.
+//SORT command is used to sort a file, arranging the records in a particular order. By default, the sort command sorts file assuming the contents are ASCII. Using options in the sort command can also be used to sort numerically.
+sort command sorts the contents of a text file, line by line.
+//grep -v : grep search particular text in text file and grep -v returns string which are not matching the search string.

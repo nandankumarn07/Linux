@@ -1,0 +1,61 @@
+Linux Assignment 02:
+Linux command to 
+	1. Swap the column (3<=> 2) of a file
+	2. After swapping if it has duplicated rows, then remove it
+	3. Place the counts of line before and after conversion in the footer of output file
+	4. Save it in a new file Demo2.txt
+The output file should contain (let assume the column swapped)
+Demo2.txt
+----------------------------
+1        2          3
+xxxx  97497   delivery
+.
+.
+.
+.
+Total no lines before: 202
+Total no lines after: 196
+-----------------------------
+
+$ touch demo1.txt
+
+$ cat > "demo1.txt"
+1,nandan,hyderabad
+2,laxmi,bengaluru
+3,tiwari,chennai
+1,nandan,hyderabad
+4,laxmi,kolkatta
+3,raj,chennai
+4,laxmi,kolkatta
+6,srivani,madiwala
+8,ananth,uttarpradesh
+6,srivani,madhyapradesh
+
+$ awk -F, '{print $1,$3,$2}' OFS=, "demo1.txt" | sort -u >"demo2.txt"
+
+$ cat "demo2.txt"
+
+1,hyderabad,nandan
+2,bengaluru,laxmi
+3,chennai,tiwari
+3,chennai,raj
+4,kolkatta,laxmi
+6,madiwala,srivani
+6,madhyapradesh,srivani
+8,uttarpradesh,ananth
+
+$ echo "Total no of lines before: $(wc -l < demo1.txt)">>demo2.txt
+
+$ echo "Total no of lines after: $(wc -l < demo1.txt)">>demo2.txt 
+
+$cat "demo2.txt"
+1,hyderabad,nandan
+2,bengaluru,laxmi
+3,chennai,tiwari
+3,chennai,raj
+4,kolkatta,laxmi
+6,madiwala,srivani
+6,madhyapradesh,srivani
+8,uttarpradesh,ananth
+Total no of lines before:10
+Total no of lines after:8
